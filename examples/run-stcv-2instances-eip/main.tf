@@ -1,5 +1,26 @@
 provider "aws" {
-  region = var.region
+  access_key   = var.aws_access_key
+  secret_key   = var.aws_secret_key
+  token        = var.aws_session_token
+  region       = var.region
+}
+
+variable aws_access_key {
+  description = "Specifies an AWS access key associated with an IAM user or role."
+  type        = string
+  default     = ""
+}
+
+variable aws_secret_key {
+  description = "Specifies the secret key associated with the access key."
+  type        = string
+  default     = ""
+}
+
+variable aws_session_token {
+  description = "Temporary session token used to create instances"
+  type        = string
+  default     = ""
 }
 
 variable "region" {
@@ -73,4 +94,9 @@ module "stcv" {
 output "instance_public_ips" {
   description = "List of public IP addresses assigned to the instances, if applicable"
   value       = module.stcv.instance_public_ips
+}
+
+output "test_plane_private_ips" {
+  description = "List of private IP addresses assigned to the test interface eth1 of instances, if applicable"
+  value       = module.stcv.test_plane_private_ips
 }
