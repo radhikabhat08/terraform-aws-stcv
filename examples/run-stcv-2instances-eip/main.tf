@@ -106,3 +106,8 @@ output "test_plane_private_ips" {
   description = "List of private IP addresses assigned to the test interface eth1 of instances, if applicable"
   value       = module.stcv.test_plane_private_ips
 }
+
+output "instance_ids" {
+  description = "List of instance IDs"
+  value       = module.stcv.instance_ids
+}
